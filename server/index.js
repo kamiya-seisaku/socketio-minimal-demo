@@ -1,3 +1,16 @@
+// gemini ver helloworld worked.  express also worked.
+// it is not port 3000 vs 8080.  even with 3000 below wasn't working
+// is it that below server isn't serving /index.html instead /app/index.html?
+// lets go back to the original and see if /app/index.html is served
+
+// ---gemini ver working helloworld---
+// const http = require('http');
+// const server = http.createServer((req, res) => {
+//   res.end('Hello World!');
+// });
+// server.listen(3000, () => {
+//   console.log('Server listening on port 3000');
+// });
 
 const http = require('http').createServer();
 
@@ -15,7 +28,6 @@ io.on('connection', (socket) => {
 });
 
 http.listen(8080, () => console.log('listening on http://localhost:8080') );
-
 
 // Regular Websockets
 

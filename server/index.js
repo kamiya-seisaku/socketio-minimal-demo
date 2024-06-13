@@ -2,18 +2,17 @@
 // it is not port 3000 vs 8080.  even with 3000 below wasn't working
 // is it that below server isn't serving /index.html instead /app/index.html?
 // lets go back to the original and see if /app/index.html is served
+// >nop http://localhost:8080/app/index.html no response.
+// now what.  going further with node.js isnt how people do it.  lets go express.
 
 // ---gemini ver working helloworld---
-// const http = require('http');
-// const server = http.createServer((req, res) => {
-//   res.end('Hello World!');
-// });
-// server.listen(3000, () => {
-//   console.log('Server listening on port 3000');
-// });
-
-const http = require('http').createServer();
-
+const http = require('http');
+const server = http.createServer((req, res) => {
+    res.end('Hello World!');
+});
+    
+    
+// const http = require('http').createServer();
 const io = require('socket.io')(http, {
     cors: { origin: "*" }
 });
@@ -27,7 +26,12 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(8080, () => console.log('listening on http://localhost:8080') );
+// http.listen(8080, () => console.log('listening on http://localhost:8080') );
+server.listen(3000, () => {
+    console.log('Server listening on port 3000');
+});
+  
+
 
 // Regular Websockets
 
